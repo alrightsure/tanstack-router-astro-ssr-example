@@ -1,9 +1,9 @@
 import { FileRoute } from "@tanstack/react-router";
-import { fetchPosts } from "../data/posts";
+import { trpcAstro } from "../lib/trpc-client";
 
 export const Route = new FileRoute('/post').createRoute({
     loader: async () => {
-        return await fetchPosts();
+        return await trpcAstro.test.query();
     },
     component: Posts
 });
@@ -14,11 +14,7 @@ function Posts() {
     return (
         <div className="p-2">
             <h3>Posts</h3>
-            <ul>
-                {posts.map(post => (
-                    <li key={post.id}>{post.title}</li>
-                ))}
-            </ul>
+            <p>{posts.toString()}</p>
         </div>
     );
 }

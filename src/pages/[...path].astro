@@ -7,6 +7,8 @@ const req = Astro.request;
 const fullUrl = new URL(req.url);
 const url = fullUrl.href.replace(fullUrl.origin, "");
 
+console.log({ url });
+
 const router = createRouter();
 
 const memoryHistory = createMemoryHistory({
